@@ -1,0 +1,187 @@
+.exploreProjects {
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  color: #2c2c2c;
+  background: #f9fafb;
+  min-height: 100vh;
+
+  .container {
+    width: 95%;
+    max-width: 1200px;
+    padding: 40px 20px;
+
+    .title {
+      margin-bottom: 32px;
+
+      h1 {
+        font-size: 30px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-align: center;
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .cover {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        h3 {
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 6px;
+          color: #1a1a1a;
+        }
+
+        .domain {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 6px;
+        }
+
+        .professor {
+          font-size: 14px;
+          color: #444;
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+
+        .stipend,
+        .duration {
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .stipend {
+          color: #1dbf73;
+        }
+
+        .duration {
+          color: #555;
+        }
+
+        .shortDesc {
+          font-size: 14px;
+          color: #444;
+          margin: 10px 0 14px 0;
+          flex-grow: 1;
+        }
+
+        .requirements {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 16px;
+
+          .req-tag {
+            background: #f0fdf4;
+            color: #1dbf73;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+          }
+
+          .more {
+            background: #e6f7f0;
+            color: #128c56;
+          }
+        }
+
+        .detailsBtn {
+          background: linear-gradient(135deg, #1dbf73, #17a864);
+          color: #fff;
+          font-weight: 600;
+          border: none;
+          padding: 10px 16px;
+          cursor: pointer;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+          align-self: flex-start;
+
+          &:hover {
+            background: linear-gradient(135deg, #17a864, #128c56);
+            transform: translateY(-1px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+      font-size: 15px;
+      font-weight: 600;
+
+      .pageBtn {
+        background: #1dbf73;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        padding: 8px 14px;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
+          background: #17a864;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+
+      .title h1 {
+        font-size: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

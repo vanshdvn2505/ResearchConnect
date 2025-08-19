@@ -21,7 +21,6 @@ function Navbar() {
   }, []);
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -39,34 +38,46 @@ function Navbar() {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">fiverr</span>
+            <span className="text">ResearchConnect</span>
           </Link>
           <span className="dot">.</span>
         </div>
+
         <div className="links">
-          <span>Fiverr Business</span>
-          <span>Explore</span>
+          <Link to="/explore">Explore Projects</Link>
+          <span>Community</span>
           <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
-          {currentUser ? (
+
+          {!currentUser && (
+            <>
+              <Link to="/login" className="link">Sign in</Link>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
+          )}
+
+          {currentUser && (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
-                  {currentUser.isSeller && (
+                  {currentUser.role === "professor" && (
                     <>
-                      <Link className="link" to="/mygigs">
-                        Gigs
+                      <Link className="link" to="/my-projects">
+                        My Projects
                       </Link>
-                      <Link className="link" to="/add">
-                        Add New Gig
+                      <Link className="link" to="/add-project">
+                        Add New Project
                       </Link>
                     </>
                   )}
-                  <Link className="link" to="/orders">
-                    Orders
-                  </Link>
+                  {currentUser.role === "student" && (
+                    <Link className="link" to="/applications">
+                      My Applications
+                    </Link>
+                  )}
                   <Link className="link" to="/messages">
                     Messages
                   </Link>
@@ -76,51 +87,9 @@ function Navbar() {
                 </div>
               )}
             </div>
-          ) : (
-            <>
-              <Link to="/login" className="link">Sign in</Link>
-              <Link className="link" to="/register">
-                <button>Join</button>
-              </Link>
-            </>
           )}
         </div>
       </div>
-      {(active || pathname !== "/") && (
-        <>
-          <hr />
-          <div className="menu">
-            <Link className="link menuLink" to="/">
-              Graphics & Design
-            </Link>
-            <Link className="link menuLink" to="/">
-              Video & Animation
-            </Link>
-            <Link className="link menuLink" to="/">
-              Writing & Translation
-            </Link>
-            <Link className="link menuLink" to="/">
-              AI Services
-            </Link>
-            <Link className="link menuLink" to="/">
-              Digital Marketing
-            </Link>
-            <Link className="link menuLink" to="/">
-              Music & Audio
-            </Link>
-            <Link className="link menuLink" to="/">
-              Programming & Tech
-            </Link>
-            <Link className="link menuLink" to="/">
-              Business
-            </Link>
-            <Link className="link menuLink" to="/">
-              Lifestyle
-            </Link>
-          </div>
-          <hr />
-        </>
-      )}
     </div>
   );
 }

@@ -6,100 +6,109 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
     img: "",
     country: "",
-    isSeller: false,
+    phone: "",
+    role: "student", // default role
     desc: "",
   });
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setUser((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
+    const { name, value } = e.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSeller = (e) => {
-    setUser((prev) => {
-      return { ...prev, isSeller: e.target.checked };
-    });
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
 
-    const url = await upload(file);
+    let url = "";
+    if (file) {
+      try {
+        url = await upload(file);
+      } catch (err) {
+        setError("File upload failed");
+        console.log(err);
+        
+        return;
+      }
+    }
+
     try {
       await newRequest.post("/auth/register", {
         ...user,
         img: url,
       });
-      navigate("/")
+      navigate("/");
     } catch (err) {
       console.log(err);
+      
+      setError(err.response?.data?.message || "Something went wrong");
     }
   };
+
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
         <div className="left">
-          <h1>Create a new account</h1>
-          <label htmlFor="">Username</label>
+          <h1>Create a ResearchConnect account</h1>
+          <label>Username</label>
           <input
             name="username"
             type="text"
             placeholder="johndoe"
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Email</label>
+          <label>Email</label>
           <input
             name="email"
             type="email"
             placeholder="email"
             onChange={handleChange}
+            required
           />
-          <label htmlFor="">Password</label>
-          <input name="password" type="password" onChange={handleChange} />
-          <label htmlFor="">Profile Picture</label>
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            onChange={handleChange}
+            required
+          />
+          <label>Profile Picture</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-          <label htmlFor="">Country</label>
+          <label>Country</label>
           <input
             name="country"
             type="text"
-            placeholder="Usa"
+            placeholder="USA"
             onChange={handleChange}
           />
-          <button type="submit">Register</button>
-        </div>
-        <div className="right">
-          <h1>I want to become a seller</h1>
-          <div className="toggle">
-            <label htmlFor="">Activate the seller account</label>
-            <label className="switch">
-              <input type="checkbox" onChange={handleSeller} />
-              <span className="slider round"></span>
-            </label>
-          </div>
-          <label htmlFor="">Phone Number</label>
+
+          {/* Role Selection */}
+          <label>Register as</label>
+          <select name="role" value={user.role} onChange={handleChange} required>
+            <option value="student">Student</option>
+            <option value="professor">Professor</option>
+          </select>
+
+          <label>Phone Number</label>
           <input
             name="phone"
             type="text"
             placeholder="+1 234 567 89"
             onChange={handleChange}
           />
-          <label htmlFor="">Description</label>
-          <textarea
-            placeholder="A short description of yourself"
-            name="desc"
-            id=""
-            cols="30"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
+          <button type="submit">Register</button>
+          {error && <p className="error">{error}</p>}
+
         </div>
       </form>
     </div>

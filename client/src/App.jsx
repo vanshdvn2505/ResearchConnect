@@ -12,13 +12,15 @@ import Add from "./pages/add/Add";
 import Orders from "./pages/orders/Orders";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
-import MyGigs from "./pages/myGigs/MyGigs";
+import ProjectDetails from "./pages/projectDetails/projectDetails";
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
 import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
+import MyProjects from "./pages/myProjects/MyProjects";
+import ExploreProjects from "./pages/explore/explore";
 function App() {
   const queryClient = new QueryClient();
 
@@ -48,8 +50,16 @@ function App() {
           element: <Gigs />,
         },
         {
-          path: "/myGigs",
-          element: <MyGigs />,
+          path: "/my-projects",
+          element: <MyProjects />,
+        },
+        {
+          path: "/projects/:id",
+          element: <ProjectDetails />,
+        },
+        {
+          path: "/explore",
+          element: <ExploreProjects />,
         },
         {
           path: "/orders",
@@ -64,7 +74,7 @@ function App() {
           element: <Message />,
         },
         {
-          path: "/add",
+          path: "/add-project",
           element: <Add />,
         },
         {

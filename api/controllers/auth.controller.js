@@ -6,6 +6,12 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res, next) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 5);
+
+    // Ensure role is provided and valid
+    if (!["professor", "student"].includes(req.body.role)) {
+      return next(createError(400, "Invalid role. Must be professor or student"));
+    }
+
     const newUser = new User({
       ...req.body,
       password: hash,
@@ -17,6 +23,7 @@ export const register = async (req, res, next) => {
     next(err);
   }
 };
+
 export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
@@ -30,7 +37,7 @@ export const login = async (req, res, next) => {
     const token = jwt.sign(
       {
         id: user._id,
-        isSeller: user.isSeller,
+        role: user.role,   // store role in JWT
       },
       process.env.JWT_KEY
     );
