@@ -6,12 +6,24 @@ import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
+import { 
+    FaDna, 
+    FaStethoscope, 
+    FaLaptopCode, 
+    FaAtom, 
+    FaUsers, 
+    FaBookOpen, 
+    FaLeaf, 
+    FaChartBar,
+    FaChartLine,
+    FaCogs // For Engineering & Robotics
+} from 'react-icons/fa';
 
 function Home() {
   return (
     <div className="home">
       <Featured />
-      <TrustedBy />
+      {/* <TrustedBy /> */}
       <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
@@ -20,38 +32,34 @@ function Home() {
       <div className="features">
         <div className="container">
           <div className="item">
-            <h1>A whole world of freelance talent at your fingertips</h1>
+            <h1>Unlock the world of academic research and collaboration</h1>
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              The best for every budget
+                <img src="./img/check.png" alt="Checkmark" />
+                Access to Diverse Research Fields
             </div>
-            <p>
-              Find high-quality services at every price point. No hourly rates,
-              just project-based pricing.
+            <p style={{ paddingLeft: '28px' }}>
+                Explore projects across various disciplines, from STEM to the humanities, and find the perfect match for your academic interests.
             </p>
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              Quality work done quickly
+                <img src="./img/check.png" alt="Checkmark" />
+                Gain Hands-On Experience
             </div>
-            <p>
-              Find the right freelancer to begin working on your project within
-              minutes.
+            <p style={{ paddingLeft: '28px' }}>
+                Move beyond theory. Apply your knowledge to real-world research projects and develop practical skills under expert mentorship.
             </p>
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              Protected payments, every time
+                <img src="./img/check.png" alt="Checkmark" />
+                Guidance from Expert Mentors
             </div>
-            <p>
-              Always know what you'll pay upfront. Your payment isn't released
-              until you approve the work.
+            <p style={{ paddingLeft: '28px' }}>
+                Collaborate directly with experienced professors who provide valuable feedback, guidance, and support throughout your research journey.
             </p>
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              24/7 support
+                <img src="./img/check.png" alt="Checkmark" />
+                Build Your Academic Portfolio
             </div>
-            <p>
-              Find high-quality services at every price point. No hourly rates,
-              just project-based pricing.
+            <p style={{ paddingLeft: '28px' }}>
+                Showcase your completed projects, build a strong portfolio, and network with faculty to advance your academic and professional career.
             </p>
           </div>
           <div className="item">
@@ -61,134 +69,112 @@ function Home() {
       </div>
       <div className="explore">
         <div className="container">
-          <h1>Explore the marketplace</h1>
-          <div className="items">
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Graphics & Design</span>
+            <h1>Explore Research Disciplines</h1>
+            <div className="items">
+                {/* Item 1 */}
+                <div className="item">
+                    <FaDna className="icon" />
+                    <div className="line"></div>
+                    <span>Life Sciences & Genetics</span>
+                </div>
+                {/* Item 2 */}
+                <div className="item">
+                    <FaStethoscope className="icon" />
+                    <div className="line"></div>
+                    <span>Health & Medicine</span>
+                </div>
+                {/* Item 3 */}
+                <div className="item">
+                    <FaLaptopCode className="icon" />
+                    <div className="line"></div>
+                    <span>Computer Science & AI</span>
+                </div>
+                {/* Item 4 */}
+                <div className="item">
+                    <FaCogs className="icon" />
+                    <div className="line"></div>
+                    <span>Engineering & Robotics</span>
+                </div>
+                {/* Item 5 */}
+                <div className="item">
+                    <FaAtom className="icon" />
+                    <div className="line"></div>
+                    <span>Physical Sciences</span>
+                </div>
+                {/* Item 6 */}
+                <div className="item">
+                    <FaUsers className="icon" />
+                    <div className="line"></div>
+                    <span>Social Sciences</span>
+                </div>
+                {/* Item 7 */}
+                <div className="item">
+                    <FaBookOpen className="icon" />
+                    <div className="line"></div>
+                    <span>Humanities</span>
+                </div>
+                {/* Item 8 */}
+                <div className="item">
+                    <FaLeaf className="icon" />
+                    <div className="line"></div>
+                    <span>Environmental Science</span>
+                </div>
+                {/* Item 9 */}
+                <div className="item">
+                    <FaChartBar className="icon" />
+                    <div className="line"></div>
+                    <span>Data Science</span>
+                </div>
+                {/* Item 10 */}
+                <div className="item">
+                    <FaChartLine className="icon" />
+                    <div className="line"></div>
+                    <span>Economics & Business</span>
+                </div>
             </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
-                alt=""
-              />
-              <div className="line"></div>
-
-              <span>Digital Marketing</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Writing & Translation</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Video & Animation</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Music & Audio</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Programming & Tech</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Business</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Lifestyle</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Data</span>
-            </div>
-            <div className="item">
-              <img
-                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/photography.01cf943.svg"
-                alt=""
-              />
-              <div className="line"></div>
-              <span>Photography</span>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
       <div className="features dark">
         <div className="container">
           <div className="item">
             <h1>
-              fiverr <i>business</i>
+              ResearchConnect <i>for Faculty</i>
             </h1>
             <h1>
-              A business solution designed for <i>teams</i>
+              A platform designed to build your <i>research team</i>
             </h1>
             <p>
-              Upgrade to a curated experience packed with tools and benefits,
-              dedicated to businesses
+              Access a suite of tools to find talented students, manage projects, and accelerate your research output.
             </p>
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              Connect to freelancers with proven business experience
+              <img src="./img/check.png" alt="Checkmark" />
+              Discover bright, motivated students from diverse academic backgrounds.
             </div>
 
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              Get matched with the perfect talent by a customer success manager
+              <img src="./img/check.png" alt="Checkmark" />
+              Utilize our smart matching algorithm to find students whose skills align with your project needs.
             </div>
 
             <div className="title">
-              <img src="./img/check.png" alt="" />
-              Manage teamwork and boost productivity with one powerful workspace
+              <img src="./img/check.png" alt="Checkmark" />
+              Collaborate seamlessly with integrated tools for communication and progress tracking.
             </div>
-            <button>Explore Fiverr Business</button>
+            <button>Explore Faculty Features</button>
           </div>
-          <div className="item">
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_870,dpr_2.0/v1/attachments/generic_asset/asset/d9c17ceebda44764b591a8074a898e63-1599597624768/business-desktop-870-x2.png"
-              alt=""
-            />
-          </div>
+            <div className="item">
+              <img
+                src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="A team of researchers collaborating around a table with laptops"
+              />
+            </div>
         </div>
-      </div>
-      <Slide slidesToShow={4} arrowsScroll={4}>
+    </div>
+      {/* <Slide slidesToShow={4} arrowsScroll={4}>
         {projects.map((card) => (
           <ProjectCard key={card.id} card={card} />
         ))}
-      </Slide>
+      </Slide> */}
     </div>
   );
 }

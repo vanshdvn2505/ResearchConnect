@@ -131,6 +131,12 @@
             width: 50px;
             height: 50px;
           }
+          .icon {
+            font-size: 50px; // Adjust size as needed
+            // color: #666;    // Adjust color as needed
+            margin-bottom: 10px; // Example spacing
+            transition: color 0.3s ease;
+          }
 
           .line{
             width: 50px;
